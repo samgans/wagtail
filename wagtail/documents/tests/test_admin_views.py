@@ -1054,6 +1054,16 @@ class TestDocumentChooserUploadView(TestCase, WagtailTestUtils):
         # The form should have an error
         self.assertContains(response, "Custom document with this Title and Collection already exists.")
 
+    def test_pagination_after_upload_form_error(self):
+        response = self.client.post(
+            reverse('wagtaildocs:chooser_upload'),
+            {
+                'document-chooser-upload-title': 'TestDoc',
+                'document-chooser-upload-file': 'test_name.txt'
+            }
+        )
+        self.assertEqual(response.status_code, 200)
+
 
 class TestDocumentChooserUploadViewWithLimitedPermissions(TestCase, WagtailTestUtils):
     def setUp(self):
