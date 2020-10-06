@@ -1066,8 +1066,7 @@ class TestDocumentChooserUploadView(TestCase, WagtailTestUtils):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'wagtaildocs/chooser/chooser.html')
         self.assertFormError(
-            response, 'uploadform', 'file',
-            'This field is required.'
+            response, 'uploadform', 'file', 'This field is required.'
         )
 
         self.assertContains(response, 'Page 1 of ')
@@ -1082,8 +1081,7 @@ class TestDocumentChooserUploadView(TestCase, WagtailTestUtils):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'wagtaildocs/chooser/chooser.html')
         self.assertFormError(
-            response, 'uploadform', 'file',
-            'This field is required.'
+            response, 'uploadform', 'file', 'This field is required.'
         )
 
         self.assertIn('searchform', response.context)
